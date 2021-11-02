@@ -64,6 +64,17 @@ def inselect():
                 result = True
     return s
 
+def resulthai(sc):
+    if sc < 0:
+        print(f"Tu as perdu sale noob --> EZZ\n"
+              f"Ton score est {sc}")
+    elif sc == 0:
+        print(f"Shit égalité\n"
+              f"Ton score est {sc}")
+    else:
+        print(f"Bravo !!\n"
+              f"Ton score est {sc}")
+
 
 def piece():
     """
@@ -83,15 +94,21 @@ def main():
     affichage(ia)
     if choix == ia:
         print('Vous avez Gagné !!')
+        r = 1
     else:
         print('Trop nul, perdu !')
+        r = -1
 
+    return r
 
 clearsystm()
 print("Appuyez sur \"Entrer\" pour démarrer le pile ou face")
 res = str(input())
 while res != "gamme" and res != "stop":
-    main()
+    score = 0
+    for i in range(5):
+        score += main()
+    resulthai(score)
     print("Appuyez sur \"Entrer\" pour rejouer ou stop pour arrêter")
     res = str(input())
     clearsystm()
